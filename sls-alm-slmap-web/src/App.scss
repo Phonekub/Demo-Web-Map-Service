@@ -1,0 +1,11 @@
+:root {
+  --header-height: 65px;
+}
+
+.header {
+  height: var(--header-height);
+}
+
+main {
+  padding-top: calc(var(--header-height) - 1px);
+}

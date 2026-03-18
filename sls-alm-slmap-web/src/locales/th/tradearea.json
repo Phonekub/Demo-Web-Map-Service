@@ -1,0 +1,59 @@
+{
+  "send_approval_confirm": "ยืนยันการส่งขออนุมัติ",
+  "not_approve_confirm": "ยืนยันการไม่อนุมัติ",
+  "return_confirm": "คุณแน่ใจว่าต้องการส่งกลับเพื่อแก้ไขหรือไม่?",
+  "approve_confirm": "คุณแน่ใจว่าต้องการอนุมัติหรือไม่?",
+  "approve_delete_confirm": "คุณแน่ใจว่าต้องการอนุมัติหรือไม่? (ลบพื้นที่)",
+  "delete_confirm": "คุณแน่ใจว่าต้องการลบหรือไม่?",
+  "confirm_drawing": "คุณแน่ใจว่าต้องการยืนยันการวาดหรือไม่?",
+  "create_delivery_area": "สร้าง Delivery Area",
+  "create_store_hub": "สร้าง Store Hub",
+  "delivery_area": "Delivery Area",
+  "store_hub": "Store Hub",
+  "zone": "ภาค",
+  "sub_zone": "ฝ่าย",
+  "store_code": "รหัสร้านค้า",
+  "store_name": "ชื่อร้านค้า",
+  "color_zone": "สีขอบเขต",
+  "description": "รายละเอียดเพิ่มเติม",
+  "loding": "กำลังโหลด...",
+  "no_data": "ไม่มีข้อมูล",
+  "warning": "แจ้งเตือน",
+  "warning_message": "พื้นที่วาดมีขนาดเกิน {{meter}} เมตรจากร้านสาขา",
+  "placeholder": {
+    "select_color_zone": "เลือกสีขอบเขต"
+  },
+  "table": {
+    "no": "ลำดับ",
+    "status": "สถานะ",
+    "dateCreated": "วันที่สร้าง",
+    "comments": "รายละเอียด",
+    "effective_date": "วันที่มีผล",
+    "approval_date": "วันที่อนุมัติ",
+    "actions": "การจัดการ",
+    "process": "ดำเนินการ"
+  },
+  "actions": {
+    "edit": "แก้ไข",
+    "save": "บันทึก",
+    "send_approve": "ส่งอนุมัติ",
+    "approve": "อนุมัติ",
+    "reject": "ปฏิเสธ",
+    "cancel": "ยกเลิก",
+    "move": "ย้ายจุด",
+    "update": "อัปเดต",
+    "confirm": "ยืนยัน",
+    "close": "ปิด",
+    "delete": "ลบ"
+  },
+  "status": {
+    "pending": "รออนุมัติ",
+    "approved": "อนุมัติแล้ว",
+    "rejected": "ปฏิเสธ",
+    "draft": "ร่าง"
+  },
+  "report_type": "ประเภทรายงาน",
+  "process_confirm": "ยืนยันการดำเนินการ",
+  "remark": "หมายเหตุ",
+  "remark_required": "กรุณาระบุหมายเหตุก่อนดำเนินการ"
+}

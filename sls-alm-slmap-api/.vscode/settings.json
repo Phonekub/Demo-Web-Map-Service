@@ -1,0 +1,12 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.rulers": [90],
+  "prettier.printWidth": 90,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.trimTrailingWhitespace": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}

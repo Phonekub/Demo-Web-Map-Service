@@ -1,0 +1,95 @@
+{
+  "data": [
+    {
+      "id": "2",
+      "branchName": "Central World Branch",
+      "branchCode": "CW001",
+      "geom": {
+        "type": "Point",
+        "coordinates": [100.5398, 13.7474]
+      }
+    },
+    {
+      "id": "3",
+      "branchName": "Maya Mall Branch",
+      "branchCode": "MY002",
+      "geom": {
+        "type": "Point",
+        "coordinates": [98.9625, 18.7956]
+      }
+    },
+    {
+      "id": "4",
+      "branchName": "Patong Beach Branch",
+      "branchCode": "PB003",
+      "geom": {
+        "type": "Point",
+        "coordinates": [98.2966, 7.8974]
+      }
+    },
+    {
+      "id": "5",
+      "branchName": "Walking Street Branch",
+      "branchCode": "WS004",
+      "geom": {
+        "type": "Point",
+        "coordinates": [100.8776, 12.9276]
+      }
+    },
+    {
+      "id": "6",
+      "branchName": "Ao Nang Branch",
+      "branchCode": "AN005",
+      "geom": {
+        "type": "Point",
+        "coordinates": [98.8656, 8.034]
+      }
+    },
+    {
+      "id": "7",
+      "branchName": "Chaweng Beach Branch",
+      "branchCode": "CB006",
+      "geom": {
+        "type": "Point",
+        "coordinates": [99.9367, 9.5304]
+      }
+    },
+    {
+      "id": "8",
+      "branchName": "Market Village Branch",
+      "branchCode": "MV007",
+      "geom": {
+        "type": "Point",
+        "coordinates": [99.9581, 12.5664]
+      }
+    },
+    {
+      "id": "9",
+      "branchName": "Night Bazaar Branch",
+      "branchCode": "NB008",
+      "geom": {
+        "type": "Point",
+        "coordinates": [99.8407, 19.9105]
+      }
+    },
+    {
+      "id": "10",
+      "branchName": "Historical Park Branch",
+      "branchCode": "HP009",
+      "geom": {
+        "type": "Point",
+        "coordinates": [100.5877, 14.3692]
+      }
+    },
+    {
+      "id": "11",
+      "branchName": "Terminal 21 Branch",
+      "branchCode": "T21010",
+      "geom": {
+        "type": "Point",
+        "coordinates": [102.0977, 14.9799]
+      }
+    }
+  ],
+  "total": 10
+}

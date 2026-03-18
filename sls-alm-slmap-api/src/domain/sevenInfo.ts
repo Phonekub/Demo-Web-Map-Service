@@ -1,0 +1,35 @@
+export interface SevenInfo {
+  storecode: string | null;
+  storename: string | null;
+  locationT: string | null;
+  tradeArea: string | null;
+  branchType: string | null;
+  sevenType: string | null;
+  contractStartDate: string | null;
+  contractEndDate: string | null;
+  storeWidth: string | null;
+  storeLength: string | null;
+  saleArea: string | null;
+  stockArea: string | null;
+  storeArea: string | null;
+  storeBuildingType: string | null;
+  roomAmount: string | null;
+  storeParking: string | null;
+  storeParkingMotocycle: string | null;
+  openDate: string | null;
+  closeDate: string | null;
+  officeHours: string | null;
+  renovateStartDate: string | null;
+  renovateEndDate: string | null;
+  tempcloseStartDate: string | null;
+  tempcloseEndDate: string | null;
+  saleAverage: string | null;
+  customerAverage: string | null;
+  salePricePerson: string | null;
+  opentypeAmount: string | null;
+  vaultAmount: string | null;
+  shelf: string | null;
+  posAmount: string | null;
+  canSaleCigarette: string | null;
+  canSaleAlcohol: string | null;
+}

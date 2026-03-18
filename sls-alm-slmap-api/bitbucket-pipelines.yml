@@ -1,0 +1,41 @@
+# กิตติกรรมประกาศ ขอขอบคุณ
+# CI/CD ตั้งต้น: ความรู้ทั้งหมด จากหนังสือ-Bitbucket-Pipeline ผู้แต่ง:นนท์ Nont Banditwong
+# Original CI/CD Template และการเรียกใช้: ทีม OCM ตึก KongKana พัฒนาต่อยอด
+# CI/CD Pipeline ฝั่งเรียกใช้งาน: ทีม SCM ปรับปรุงเพื่อทีม TDG
+# CI/CD Template ที่เก็บส่วนกลาง: ทีม SCM พัฒนาจาก OCM ตึก KongKana
+
+# ก่อนรันให้ Merger ไปตั้งค่าที่
+#    1. Repository setting เพิ่ม Repository Varible ดังนี้
+#      CI_AWS_OIDC_ECR_PULL_ROLE_ARN=arn:aws:iam::257394478770:role/gos-dso-cid-bitbucket-cicd-pipeline-execution-role
+#      CI_SONAR_HOST_URL=https://sonar.gosoft.co.th
+#      CI_SONAR_TOKEN=*********
+#      CI_SONAR_PROJECTKEY_PREFIX=<serviceCode>-<systemCode>-<applicationCode>
+# ก่อน Merge เข้า Main
+#    2. Deployment เพิ่ม dev เพื่อเก็บ Image
+#      CI_ECR_DEST_URI=<เลขAWS-Account-Id>.dkr.ecr.ap-southeast-1.amazonaws.com
+#      CI_ECR_SRC_URI=<เลขAWS-Account-Id>.dkr.ecr.ap-southeast-1.amazonaws.com
+#    3. ไปที่ AWS ECR สร้าง ชื่อที่เก็บ Image ชื่อเดียวกับ Repo ต่อด้วย env
+#      เช่น Repo Name: sss-www-xxx-yyy-zzz
+#      ชื่อ ECR ของ Dev จะเป็น: sss-www-xxx-yyy-zzz-dev
+#      และ สร้าง AWS Role ตามเอกสาร
+#      https://cpallgroup.sharepoint.com/:p:/r/sites/QPMGosoft/Shared%20Documents/CICD/CICD_17_Steps/Hand-On/%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99-CICD-Repository-Template.pptx?d=w495324464542493e8a5d431d6b7145ac&csf=1&web=1&e=JJ70v8
+
+pipelines:
+  pull-requests:
+    feature/*: # 2. Dev เปิด Pull Request จาก feature/* ขอ merge เข้า main, จะถูก Scan ด้วย SonarQube
+      import: sls-alm-slmap-pipeline-template:main:feature-pull-request-merge-to-main-pipeline
+    hotfix/*: # 2. Dev เปิด Pull Request จาก feature/* ขอ merge เข้า main, จะถูก Scan ด้วย SonarQube
+      import: sls-alm-slmap-pipeline-template:main:feature-pull-request-merge-to-main-pipeline
+  branches:
+    feature/*: # 1. feature ที่ Dev แก้ไขจะถูก Security Scan เพื่อให้เห็นคุณภาพของงาน code ของตนเอง
+      import: sls-alm-slmap-pipeline-template:main:feature-branch-pipeline
+    hotfix/*: # 1. feature ที่ Dev แก้ไขจะถูก Security Scan เพื่อให้เห็นคุณภาพของงาน code ของตนเอง
+      import: sls-alm-slmap-pipeline-template:main:feature-branch-pipeline
+    main: # 3. Senior/Specialist อนุมัติ merge เข้า main, build container และ Container Sign Signature ด้วย AWS Profile
+      import: sls-alm-slmap-pipeline-template:main:main-branch-pipeline
+    dev: # 4. Dev เปิด PR merge จาก main ไป dev(ซึ่งเป็นชื่อ env) # จะตรวจลายเซ็นต์และ Deploy ไปที่ DEV Env
+      import: sls-alm-slmap-pipeline-template:main:dev-branch-ecs-pipeline
+    uat: # 5. Dev เปิด PR merge จาก branch dev ไป qc/uat(ซึ่งเป็นชื่อ env) ที่ส่งงานให้ Tester # ตรวจลายเซ็นต์และ Deploy ไปที่ UAT Env
+      import: sls-alm-slmap-pipeline-template:main:uat-branch-ecs-pipeline
+    production: # 6. Senior/Specialist เปิด PR merge จาก branch uat + แนบหลักฐาน QC PASS ตรวจผ่าน, # pipeline ตรวจลายเซ็นต์และ Deploy ไปที่ Production Env
+      import: sls-alm-slmap-pipeline-template:main:production-branch-ecs-pipeline

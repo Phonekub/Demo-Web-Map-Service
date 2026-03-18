@@ -1,0 +1,39 @@
+# กิตติกรรมประกาศ ขอขอบคุณ
+# CI/CD ตั้งต้น: จากหนังสือ-Bitbucket-Pipeline โดย นนท์Deli,
+# CI/CD Code ทั้งหลาย ที่ SCM ขออนุญาตนำมาใช้จาก ปาล์มCOP,กอล์ฟ&เจี๊ยะSLS,เอ็ม&บอย&หวายSC,ธี&โมRMS,มิกCTM...เอ่ยไม่หมด
+########### และทุกๆคน ทุกๆทีมใน Gosoft ที่มีหัวใจ รักในคุณภาพ และความปลอดภัยในระบบของตนเอง
+# Original วิธีการทำ Template และ การเรียกใช้: ตึก KongKana OCM แชร์ให้ SCM เพื่อประโยชน์กับองค์กร
+# CI/CD Pipeline ฝั่งเรียกใช้งาน Container, Website : SCM,เจี๊ยะ SLS,กริช True Digital Group,ปอนด์&ไซ Tree Roots Entertainment Group,เบ็นซ์ MSM
+# CI/CD Template ที่เก็บส่วนกลาง: ทีม SCM พัฒนาจาก OCM ตึก KongKana
+
+# ก่อนรันให้ Merger ไปตั้งค่าที่
+#    1. Repository setting เพิ่ม Repository Varible ดังนี้
+#      CI_AWS_OIDC_ECR_PULL_ROLE_ARN=arn:aws:iam::257394478770:role/gos-dso-cid-bitbucket-cicd-pipeline-execution-role
+#      CI_SONAR_HOST_URL=https://sonar.gosoft.co.th
+#      CI_SONAR_TOKEN=*********
+#      CI_SONAR_PROJECTKEY_PREFIX=<serviceCode>-<systemCode>-<applicationCode>
+# ก่อน Merge เข้า Main
+#    2. ไปที่ Menu Deployment เพิ่ม dev เพื่อเก็บ Image
+#      CI_ECR_DEST_URI=<เลขAWS-Account-Id>.dkr.ecr.ap-southeast-1.amazonaws.com
+#      CI_ECR_SRC_URI=<เลขAWS-Account-Id>.dkr.ecr.ap-southeast-1.amazonaws.com
+#    3. ไปที่ AWS ECR สร้าง ชื่อที่เก็บ Image ชื่อเดียวกับ Repo ต่อด้วย env
+#      เช่น Repo Name: sss-www-xxx-yyy-zzz
+#      ชื่อ ECR ของ Dev จะเป็น: sss-www-xxx-yyy-zzz-<environment>
+#      และ สร้าง AWS Role ตามเอกสาร
+#      https://cpallgroup.sharepoint.com/:p:/r/sites/QPMGosoft/Shared%20Documents/CICD/CICD_17_Steps/Hand-On/%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99-CICD-Repository-Template.pptx?d=w495324464542493e8a5d431d6b7145ac&csf=1&web=1&e=JJ70v8
+
+pipelines:
+  pull-requests:
+    feature/*: # 2. Dev เปิด Pull Request จาก feature/* ขอ merge เข้า main, จะถูก Scan ด้วย SonarQube
+      import: sls-alm-slmap-pipeline-template:main:feature-pull-request-merge-to-main-javascript-pipeline
+  branches:
+    feature/*: # 1. feature ที่ Dev แก้ไขจะถูก Security Scan เพื่อให้เห็นคุณภาพของงาน code ของตนเอง
+      import: sls-alm-slmap-pipeline-template:main:feature-branch-pipeline
+    main: # 3. Senior/Specialist อนุมัติ merge เข้า main, build container และ Container Sign Signature ด้วย AWS Profile
+      import: sls-alm-slmap-pipeline-template:main:main-branch-web-pipeline
+    dev: # 4. Senior/Specialist อนุมัติ merge เข้า Dev (จากที่ Dev เปิด PR ขอ merge จาก main ไป dev(ซึ่งเป็นชื่อ env) # จะตรวจลายเซ็นต์และ Deploy ไปที่ DEV Env)
+      import: sls-alm-slmap-pipeline-template:main:merge-main-to-dev-deploy-s3-pipeline
+    uat: # 5. Senior/Specialist อนุมัติ merge เข้า UAT (จากที่ Dev เปิด PR merge จาก branch dev ไป qc/uat(ซึ่งเป็นชื่อ env) ที่ส่งงานให้ Tester # ตรวจลายเซ็นต์และ Deploy ไปที่ UAT Env
+      import: sls-alm-slmap-pipeline-template:main:merge-dev-to-uat-deploy-s3-pipeline
+    production: # 6. Senior/Specialist เปิด PR merge จาก branch uat + แนบหลักฐาน QC PASS ตรวจผ่าน, # pipeline ตรวจลายเซ็นต์และ Deploy ไปที่ Production Env
+      import: sls-alm-slmap-pipeline-template:main:merge-uat-to-production-deploy-s3-pipeline

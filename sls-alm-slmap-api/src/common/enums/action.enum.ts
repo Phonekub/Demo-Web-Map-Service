@@ -1,0 +1,11 @@
+export enum WorkflowAction {
+  CREATE = 'CREATE',
+  EDIT = 'EDIT',
+  DELETE = 'DELETE',
+  APPROVE = 'APPROVE',
+  REJECT = 'REJECT',
+  NOT_APPROVE = 'NOT_APPROVE',
+  CANCEL = 'CANCEL',
+  SAVE = 'SAVE',
+  SEND_APPROVE = 'SEND_APPROVE',
+}

@@ -1,0 +1,16 @@
+{
+  "alert": {
+    "delete_image": "Delete this image?",
+    "delete_success": "Image deleted successfully",
+    "delete_error": "Delete image failed",
+    "upload_success": "Image uploaded successfully",
+    "upload_error": "Upload images failed",
+    "load_error": "Failed to load images"
+  },
+
+  "no_images": "No images uploaded yet",
+  "upload": "Upload ",
+  "files": "files",
+  "images": "Images",
+  "loading_images": "Loading images..."
+}

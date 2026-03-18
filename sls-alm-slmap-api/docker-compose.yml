@@ -1,0 +1,42 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3001:3000'
+    volumes:
+      - .:/app
+      - ./node_modules:/app/node_modules
+    environment:
+      NODE_ENV: develop
+      WHITELIST_ORIGIN: ^http?://localhost(:\d+)$
+      # Database connection
+      DB_HOST: postgres-db
+      DB_PORT: 5432
+      DB_USERNAME: user
+      DB_PASSWORD: password
+      DB_NAME: allmap_location
+    entrypoint: ['pnpm', 'start:dev']
+    restart: unless-stopped
+  postgres-db:
+    image: postgis/postgis:15-3.3
+    platform: linux/amd64
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: allmap_location
+      # Enable PostGIS extensions
+      POSTGRES_MULTIPLE_EXTENSIONS: postgis,postgis_topology,fuzzystrmatch,postgis_tiger_geocoder
+      # Fix collation version mismatch
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      POSTGRES_INITDB_ARGS: '--locale=C.UTF-8 --encoding=UTF8'
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:

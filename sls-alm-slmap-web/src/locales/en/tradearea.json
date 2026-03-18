@@ -1,0 +1,59 @@
+{
+  "send_approval_confirm": "Are you sure you want to send the approval request?",
+  "not_approve_confirm": "Are you sure you want to not approve?",
+  "return_confirm": "Are you sure you want to return for revision?",
+  "approve_confirm": "Are you sure you want to approve?",
+  "approve_delete_confirm": "Are you sure you want to approve? (Delete area)",
+  "delete_confirm": "Are you sure you want to delete?",
+  "create_delivery_area": "Create Delivery Area",
+  "confirm_drawing": "Are you sure you want to confirm the drawing?",
+  "create_store_hub": "Create Store Hub",
+  "delivery_area": "Delivery Area",
+  "store_hub": "Store Hub",
+  "zone": "Zone",
+  "sub_zone": "Sub Zone",
+  "store_code": "Store Code",
+  "store_name": "Store Name",
+  "color_zone": "Color Zone",
+  "description": "Description",
+  "loding": "Loading...",
+  "no_data": "No Data",
+  "warning": "Warning",
+  "warning_message": "The drawing area is more than {{meter}} meters from the store.",
+  "placeholder": {
+    "select_color_zone": "Select Color Zone"
+  },
+  "table": {
+    "no": "No.",
+    "status": "Status",
+    "dateCreated": "Date Created",
+    "comments": "Comments",
+    "effective_date": "Effective Date",
+    "approval_date": "Approval Date",
+    "actions": "Actions",
+    "process": "Process"
+  },
+  "actions": {
+    "edit": "Edit",
+    "save": "Save",
+    "send_approve": "Send for Approval",
+    "approve": "Approve",
+    "reject": "Reject",
+    "cancel": "Cancel",
+    "move": "Move",
+    "update": "Update",
+    "confirm": "Confirm",
+    "close": "Close",
+    "delete": "Delete"
+  },
+  "status": {
+    "pending": "Pending Approval",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "draft": "Draft"
+  },
+  "report_type": "Report Type",
+  "process_confirm": "Process Confirmation",
+  "remark": "Remark",
+  "remark_required": "Please provide a remark before proceeding"
+}

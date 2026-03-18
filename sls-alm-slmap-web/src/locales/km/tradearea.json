@@ -1,0 +1,59 @@
+{
+  "send_approval_confirm": "តើអ្នកប្រាកដទេថាចង់ផ្ញើសំណើអនុម័ត?",
+  "not_approve_confirm": "តើអ្នកប្រាកដទេថាចង់មិនអនុម័ត?",
+  "return_confirm": "តើអ្នកប្រាកដទេថាចង់ត្រឡប់ដើម្បីកែសម្រួល?",
+  "approve_confirm": "តើអ្នកប្រាកដទេថាចង់អនុម័ត?",
+  "approve_delete_confirm": "តើអ្នកប្រាកដទេថាចង់អនុម័ត? (លុបតំបន់)",
+  "delete_confirm": "តើអ្នកប្រាកដទេថាចង់លុប?",
+  "create_delivery_area": "បង្កើតតំបន់ដឹកជញ្ជូន",
+  "confirm_drawing": "តើអ្នកប្រាកដទេថាចង់បញ្ជាក់ការគូរ?",
+  "create_store_hub": "បង្កើតហាប់ហាង",
+  "delivery_area": "តំបន់ដឹកជញ្ជូន",
+  "store_hub": "ហាប់ហាង",
+  "zone": "តំបន់",
+  "sub_zone": "តំបន់រង",
+  "store_code": "លេខកូដហាង",
+  "store_name": "ឈ្មោះហាង",
+  "color_zone": "ពណ៌តំបន់",
+  "description": "ព័ត៌មានលម្អិតបន្ថែម",
+  "loding": "កំពុងទាញយក...",
+  "no_data": "គ្មានទិន្នន័យ",
+  "warning": "ការព្រមាន",
+  "warning_message": "តំបន់គូរមានទំហំលើស {{meter}} ម៉ែត្រពីហាងសាខា",
+  "placeholder": {
+    "select_color_zone": "ជ្រើសរើសពណ៌តំបន់"
+  },
+  "table": {
+    "no": "លេខរៀង",
+    "status": "ស្ថានភាព",
+    "dateCreated": "កាលបរិច្ឆេទបង្កើត",
+    "comments": "ព័ត៌មានលម្អិត",
+    "effective_date": "កាលបរិច្ឆេទដែលមានប្រសិទ្ធភាព",
+    "approval_date": "កាលបរិច្ឆេទអនុម័ត",
+    "actions": "សកម្មភាព",
+    "process": "ដំណើរការ"
+  },
+  "actions": {
+    "edit": "កែសម្រួល",
+    "save": "រក្សាទុក",
+    "send_approve": "ផ្ញើសម្រាប់អនុម័ត",
+    "approve": "អនុម័ត",
+    "reject": "បដិសេធ",
+    "cancel": "បោះបង់",
+    "move": "ផ្លាស់ទីចំណុច",
+    "update": "អាប់ដេត",
+    "confirm": "បញ្ជាក់",
+    "close": "បិទ",
+    "delete": "លុប"
+  },
+  "status": {
+    "pending": "កំពុងរង់ចាំអនុម័ត",
+    "approved": "បានអនុម័តរួចហើយ",
+    "rejected": "បានបដិសេធ",
+    "draft": "សេចក្តីព្រាង"
+  },
+  "report_type": "ប្រភេទរបាយការណ៍",
+  "process_confirm": "ការបញ្ជាក់ដំណើរការ",
+  "remark": "សម្គាល់",
+  "remark_required": "សូមផ្តល់សម្គាល់មុនពេលបន្ត"
+}

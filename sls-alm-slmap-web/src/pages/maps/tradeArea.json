@@ -1,0 +1,52 @@
+[
+  {
+    "tradeAreaId": "11",
+    "storeId": "2",
+    "storeCode": "SW-002",
+    "storeName": "Central World Branch",
+    "coordinates": [
+      [
+        [100.538503822, 13.74624582],
+        [100.539592632, 13.744885968],
+        [100.54588237, 13.746355177],
+        [100.540837344, 13.747076203],
+        [100.5408, 13.7484],
+        [100.542565986, 13.752241071],
+        [100.5388, 13.7484],
+        [100.538008201, 13.747106328],
+        [100.538503822, 13.74624582]
+      ]
+    ],
+    "geometryType": "polygon",
+    "areaSqm": 1000,
+    "perimeterM": 400,
+    "status": "APPROVED",
+    "isActive": false,
+    "wfTransactionId": null,
+    "createdAt": "",
+    "createdBy": "user-123"
+  },
+  {
+    "tradeAreaId": "12",
+    "storeId": "2",
+    "storeCode": "SW-002",
+    "storeName": "Central World Branch",
+    "coordinates": [
+      [
+        [100.5378, 13.7454],
+        [100.5418, 13.7454],
+        [100.5418, 13.749400000000001],
+        [100.5378, 13.749400000000001],
+        [100.5378, 13.7454]
+      ]
+    ],
+    "geometryType": "polygon",
+    "areaSqm": 1000,
+    "perimeterM": 400,
+    "status": "DRAFT",
+    "isActive": false,
+    "wfTransactionId": null,
+    "createdAt": "",
+    "createdBy": "user-123"
+  }
+]

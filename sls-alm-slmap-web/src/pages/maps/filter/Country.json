@@ -1,0 +1,50 @@
+{
+  "country": [
+    {
+      "id": "th",
+      "label": "Thailand"
+    },
+    {
+      "id": "sg",
+      "label": "Singapore"
+    },
+    {
+      "id": "my",
+      "label": "Malaysia"
+    },
+    {
+      "id": "id",
+      "label": "Indonesia"
+    }
+  ],
+  "province": [
+    { "id": "chatuchak", "label": "Chatuchak" },
+    { "id": "dindaeng", "label": "Din Daeng" },
+    { "id": "huaykwang", "label": "Huai Khwang" },
+    { "id": "klong_toei", "label": "Khlong Toei" },
+    { "id": "pathumwan", "label": "Pathum Wan" },
+    { "id": "ratchathewi", "label": "Ratchathewi" },
+    { "id": "watthana", "label": "Watthana" },
+    { "id": "bang_rak", "label": "Bang Rak" },
+    { "id": "phaya_thai", "label": "Phaya Thai" },
+    { "id": "pom_prap", "label": "Pom Prap Sattru Phai" },
+    { "id": "phra_nakhon", "label": "Phra Nakhon" },
+    { "id": "samphanthawong", "label": "Samphanthawong" },
+    { "id": "bangkok_noi", "label": "Bangkok Noi" },
+    { "id": "bangkok_yai", "label": "Bangkok Yai" },
+    { "id": "phasi_charoen", "label": "Phasi Charoen" }
+  ],
+  "district": [
+    { "id": "si_sathorn", "label": "Si Sathorn" },
+    { "id": "suriyawong", "label": "Suriyawong" },
+    { "id": "sathon", "label": "Sathon" },
+    { "id": "thungmahamek", "label": "Thung Mahamek" },
+    { "id": "bangrak", "label": "Bangrak" },
+    { "id": "si_phaya", "label": "Si Phaya" }
+  ],
+  "subDistrict": [
+    { "id": "surasak", "label": "Surasak" },
+    { "id": "sampantawong", "label": "Sampantawong" },
+    { "id": "mahanakhon", "label": "Mahanakhon" }
+  ]
+}

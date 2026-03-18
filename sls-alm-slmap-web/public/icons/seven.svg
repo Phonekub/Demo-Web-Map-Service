@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32">
+  <!-- Sign board -->
+  <rect x="10" y="4" width="44" height="12" rx="4" fill="#FF6B3D" stroke="#222" stroke-width="2"/>
+  <!-- Awning stripes -->
+  <path d="M6 16 L58 16 L58 26 Q54 30 50 26 Q46 30 42 26 Q38 30 34 26 Q30 30 26 26 Q22 30 18 26 Q14 30 10 26 Q6 30 6 26 Z" fill="#FFD93D" stroke="#222" stroke-width="2"/>
+  <path d="M10 26 Q14 30 18 26" fill="#4CAF50" stroke="#222" stroke-width="1.5"/>
+  <path d="M18 26 Q22 30 26 26" fill="#FFD93D" stroke="#222" stroke-width="1.5"/>
+  <path d="M26 26 Q30 30 34 26" fill="#4CAF50" stroke="#222" stroke-width="1.5"/>
+  <path d="M34 26 Q38 30 42 26" fill="#FFD93D" stroke="#222" stroke-width="1.5"/>
+  <path d="M42 26 Q46 30 50 26" fill="#4CAF50" stroke="#222" stroke-width="1.5"/>
+  <!-- Building body -->
+  <rect x="8" y="26" width="48" height="32" rx="1" fill="#26C6B0" stroke="#222" stroke-width="2"/>
+  <!-- Window -->
+  <rect x="14" y="32" width="18" height="14" rx="1" fill="#64B5F6" stroke="#222" stroke-width="2"/>
+  <!-- Door -->
+  <rect x="38" y="32" width="12" height="20" rx="4" fill="#FFD93D" stroke="#222" stroke-width="2"/>
+  <!-- Door knob -->
+  <circle cx="46" cy="44" r="1.5" fill="#222"/>
+</svg>

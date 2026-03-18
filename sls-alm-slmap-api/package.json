@@ -1,0 +1,142 @@
+{
+  "name": "msm-rsm-rsmap-rssm-auth-api",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:mock": "node mock-server.js",
+    "dev": "cross-env NODE_ENV=local nest start --watch",
+    "dev:mock": "node mock-server.js",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:ci": "JEST_JUNIT_OUTPUT_DIR=test-reports jest --testPathPatterns='.*\\.spec\\.(ts|js)$' --testPathIgnorePatterns='<rootDir>/node_modules/' --runInBand --detectOpenHandles --forceExit --collectCoverage --coverageReporters=lcov --coverageReporters=text --coverageDirectory=\"./coveragereport\" --ci --reporters=default --reporters=jest-junit --watchAll=false",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.996.0",
+    "@aws-sdk/client-ses": "^3.996.0",
+    "@aws-sdk/s3-request-presigner": "^3.996.0",
+    "@nestjs/axios": "^4.0.0",
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.0",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.1.16",
+    "@nestjs/typeorm": "^11.0.0",
+    "axios": "^1.13.5",
+    "bcryptjs": "^3.0.2",
+    "builder-pattern": "^2.2.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "geojson": "^0.5.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1",
+    "multer": "^2.1.1",
+    "nestjs-pino": "^4.4.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.16.3",
+    "pino-http": "^10.4.0",
+    "pino-pretty": "^13.0.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.22"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@nestjs/testing": "^11.0.1",
+    "@swc/cli": "^0.8.0",
+    "@swc/core": "^1.10.7",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/express": "^5.0.0",
+    "@types/geojson": "^7946.0.16",
+    "@types/jest": "^29.5.14",
+    "@types/lodash": "^4.17.16",
+    "@types/multer": "^2.1.0",
+    "@types/node": "^22.10.7",
+    "@types/passport-jwt": "^4.0.1",
+    "@types/passport-local": "^1.0.38",
+    "@types/pg": "^8.15.5",
+    "@types/supertest": "^6.0.2",
+    "cross-env": "^10.1.0",
+    "eslint": "^10.0.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "jest": "^30.3.0",
+    "jest-junit": "^16.0.0",
+    "prettier": "^3.4.2",
+    "source-map-support": "^0.5.21",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.56.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "minimatch": "5.1.8",
+      "serialize-javascript": ">=7.0.3",
+      "ajv": "^8.18.0",
+      "file-type": "^21.3.1"
+    }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": ".*\\.spec\\.ts$",
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/",
+      "<rootDir>/node_modules/"
+    ],
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.(t|j)s",
+      "!src/**/*.spec.ts",
+      "!src/**/*.d.ts"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/(app.module.ts|main.ts)",
+      "<rootDir>/src/(domain|services|config)",
+      "<rootDir>/src/common/exceptions",
+      "<rootDir>/src/adapter/inbound/(dtos|mappers|guards|strategies)",
+      "<rootDir>/src/adapter/outbound/(repositories|gateways)",
+      "<rootDir>/src/application/commands",
+      "<rootDir>/src/adapter/adapter.module.ts",
+      "<rootDir>/src/application/application.module.ts"
+    ],
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@common/(.*)$": "<rootDir>/src/common/$1"
+    }
+  }
+}

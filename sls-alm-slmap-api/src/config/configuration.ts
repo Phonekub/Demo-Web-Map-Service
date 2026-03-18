@@ -1,0 +1,12 @@
+export const cookieAuthenticationKey = 'Authentication';
+export const cookieExpirationTime = process.env.COOKIE_EXPIRATION_TIME;
+export const adClientId = process.env.AD_CLIENT_ID;
+export const adClientSecret = process.env.AD_CLIENT_SECRET;
+export const adAuthenUrl = process.env.AD_AUTHEN_URL;
+export const adTokenUrl = process.env.AD_TOKEN_URL;
+export const adGetUserInfoUrl = process.env.AD_GET_USER_INFO_URL;
+export const adLogoutUrl = process.env.AD_LOGOUT_URL;
+export const adCallbackUrl = process.env.AD_CALLBACK_URL;
+export const adRedirectAfterLoginUrl = process.env.AD_REDIRECT_AFTER_LOGIN_URL;
+export const dbSchema = process.env.DB_SCHEMA;
+export const rentalApiUrl = process.env.RENTAL_API_URL;
