@@ -301,15 +301,8 @@ export const InfoPanel = ({
   }, [onSelectCompoent]);
 
   const handleClose = useCallback(() => {
-    if (
-      basicInfoRef.current?.hasUnsavedChanges &&
-      basicInfoRef.current.hasUnsavedChanges()
-    ) {
-      setPendingClose(true);
-      basicInfoRef.current.showUnsavedPopup();
-    } else {
-      onClose();
-    }
+    // ปิด panel ทันที ไม่เช็ค unsaved
+    onClose();
   }, [onClose]);
 
   const handleSavedAndClose = useCallback(() => {
