@@ -401,15 +401,7 @@ export const MapsPage: React.FC = () => {
   const handlePointClick = useCallback((event: PointClickEvent) => {
     const props = (event.properties || {}) as Record<string, any>;
 
-    // If the POI has no layerProperties, don't open InfoPanel
-    const layerProps = props.layerProperties;
-    if (!layerProps || (Array.isArray(layerProps) && layerProps.length === 0)) {
-      // Call standard map click handler to show LocationClickPopup
-      handleMapClick({ latitude: event.coordinates[1], longitude: event.coordinates[0] });
-      return;
-    }
-
-    // Close any existing popup
+    // Always show InfoPanel when clicking POI icon
     setClickedLocation(null);
 
     const locationData: any = {
