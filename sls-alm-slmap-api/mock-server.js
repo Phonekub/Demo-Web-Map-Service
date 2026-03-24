@@ -18,73 +18,45 @@ app.use(cors({
 
 // ====================== MOCK DATA ======================
 
-const SEVEN_STORES = [
-  {
-    id: 1, uid: 'POI-001', name: 'ร้านค้า สยามสแควร์', namt: 'ร้านค้า สยามสแควร์',
-    branchName: 'Siam Square', branchCode: '00001', storeCode: '00001',
-    location: 'สยามสแควร์ ซ.3', layerId: 1, layerName: 'ร้านค้า',
-    geom: { type: 'Point', coordinates: [100.5332, 13.7447] },
-    area: { id: 1, coordinates: [], shape: 'Polygon' },
-    layer: { id: 1, symbol: 'seven' },
-    status: 'active', grade: 'A', saleAverage: 85000,
-    sevenType: 1, sevenTypeName: 'Corporate',
-    zoneName: 'Zone A', subZoneName: 'Sub A1',
-    provinceName: 'กรุงเทพมหานคร', districtName: 'ปทุมวัน', subDistrictName: 'ปทุมวัน',
-    latitude: 13.7447, longitude: 100.5332,
-  },
-  {
-    id: 2, uid: 'POI-002', name: 'ร้านค้า อโศก', namt: 'ร้านค้า อโศก',
-    branchName: 'Asoke', branchCode: '00002', storeCode: '00002',
-    location: 'ถ.อโศกมนตรี', layerId: 1, layerName: 'ร้านค้า',
-    geom: { type: 'Point', coordinates: [100.5601, 13.7381] },
-    area: { id: 2, coordinates: [], shape: 'Polygon' },
-    layer: { id: 1, symbol: 'seven' },
-    status: 'active', grade: 'A', saleAverage: 92000,
-    sevenType: 1, sevenTypeName: 'Corporate',
-    zoneName: 'Zone A', subZoneName: 'Sub A2',
-    provinceName: 'กรุงเทพมหานคร', districtName: 'วัฒนา', subDistrictName: 'คลองเตยเหนือ',
-    latitude: 13.7381, longitude: 100.5601,
-  },
-  {
-    id: 3, uid: 'POI-003', name: 'ร้านค้า ทองหล่อ', namt: 'ร้านค้า ทองหล่อ',
-    branchName: 'Thonglor', branchCode: '00003', storeCode: '00003',
-    location: 'ซ.ทองหล่อ 13', layerId: 1, layerName: 'ร้านค้า',
-    geom: { type: 'Point', coordinates: [100.5787, 13.7343] },
-    area: { id: 3, coordinates: [], shape: 'Polygon' },
-    layer: { id: 1, symbol: 'seven' },
-    status: 'active', grade: 'B', saleAverage: 65000,
-    sevenType: 2, sevenTypeName: 'Franchise',
-    zoneName: 'Zone B', subZoneName: 'Sub B1',
-    provinceName: 'กรุงเทพมหานคร', districtName: 'วัฒนา', subDistrictName: 'คลองตันเหนือ',
-    latitude: 13.7343, longitude: 100.5787,
-  },
-  {
-    id: 4, uid: 'POI-004', name: 'ร้านค้า ลาดพร้าว', namt: 'ร้านค้า ลาดพร้าว',
-    branchName: 'Lat Phrao', branchCode: '00004', storeCode: '00004',
-    location: 'ถ.ลาดพร้าว 71', layerId: 1, layerName: 'ร้านค้า',
-    geom: { type: 'Point', coordinates: [100.5882, 13.7881] },
-    area: { id: 4, coordinates: [], shape: 'Polygon' },
-    layer: { id: 1, symbol: 'seven' },
-    status: 'active', grade: 'B', saleAverage: 58000,
-    sevenType: 1, sevenTypeName: 'Corporate',
-    zoneName: 'Zone C', subZoneName: 'Sub C1',
-    provinceName: 'กรุงเทพมหานคร', districtName: 'จตุจักร', subDistrictName: 'จันทรเกษม',
-    latitude: 13.7881, longitude: 100.5882,
-  },
-  {
-    id: 5, uid: 'POI-005', name: 'ร้านค้า สีลม', namt: 'ร้านค้า สีลม',
-    branchName: 'Silom', branchCode: '00005', storeCode: '00005',
-    location: 'ถ.สีลม', layerId: 1, layerName: 'ร้านค้า',
-    geom: { type: 'Point', coordinates: [100.5231, 13.7262] },
-    area: { id: 5, coordinates: [], shape: 'Polygon' },
-    layer: { id: 1, symbol: 'seven' },
-    status: 'active', grade: 'A', saleAverage: 110000,
-    sevenType: 1, sevenTypeName: 'Corporate',
-    zoneName: 'Zone A', subZoneName: 'Sub A1',
-    provinceName: 'กรุงเทพมหานคร', districtName: 'บางรัก', subDistrictName: 'สีลม',
-    latitude: 13.7262, longitude: 100.5231,
-  },
-];
+const REGIONS = ['ภาคกลาง', 'ภาคเหนือ', 'ภาคตะวันออกเฉียงเหนือ', 'ภาคใต้'];
+const DEPARTMENTS = ['ฝ่ายปฏิบัติการ', 'ฝ่ายการตลาด', 'ฝ่ายบริหาร', 'ฝ่ายพัฒนาธุรกิจ'];
+const SEVEN_STORES = Array.from({ length: 100 }, (_, i) => {
+  const id = i + 1;
+  const uid = `POI-${String(id).padStart(3, '0')}`;
+  const branchName = `Branch ${id}`;
+  const branchCode = String(id).padStart(5, '0');
+  const storeCode = branchCode;
+  const name = `ร้านค้า ${branchName}`;
+  const namt = name;
+  const location = `Location ${id}`;
+  const layerId = 1;
+  const layerName = 'ร้านค้า';
+  // สุ่มพิกัดในกรุงเทพฯ/ปริมณฑล (lat: 13.6–13.9, lng: 100.4–100.75)
+  const latitude = +(13.6 + Math.random() * 0.3).toFixed(6);
+  const longitude = +(100.4 + Math.random() * 0.35).toFixed(6);
+  const geom = { type: 'Point', coordinates: [longitude, latitude] };
+  const area = { id, coordinates: [], shape: 'Polygon' };
+  const layer = { id: 1, symbol: 'seven' };
+  const status = 'active';
+  const grade = ['A', 'B', 'C'][i % 3];
+  const saleAverage = 50000 + (i * 1000) % 70000;
+  const sevenType = (i % 2) + 1;
+  const sevenTypeName = sevenType === 1 ? 'Corporate' : 'Franchise';
+  const zoneName = `Zone ${String.fromCharCode(65 + (i % 5))}`;
+  const subZoneName = `Sub ${String.fromCharCode(65 + (i % 5))}${(i % 3) + 1}`;
+  const provinceName = 'กรุงเทพมหานคร';
+  const districtName = `เขต${id}`;
+  const subDistrictName = `แขวง${id}`;
+  // เพิ่ม field region (ภาค) และ department (ฝ่าย)
+  const region = REGIONS[i % REGIONS.length];
+  const department = DEPARTMENTS[i % DEPARTMENTS.length];
+  return {
+    id, uid, name, namt, branchName, branchCode, storeCode, location, layerId, layerName,
+    geom, area, layer, status, grade, saleAverage, sevenType, sevenTypeName,
+    zoneName, subZoneName, provinceName, districtName, subDistrictName, latitude, longitude,
+    region, department
+  };
+});
 
 const COMPETITOR_STORES = [
   {
@@ -248,98 +220,37 @@ function generatePolygonAroundPoint(lng, lat, radiusKm = 0.6) {
   return [coords]; // GeoJSON Polygon format: array of rings
 }
 
-const TRADE_AREAS = [
-  // Delivery Areas for ร้านค้า Siam Square (POI-001)
-  {
-    id: 1001, poiId: 1, refStoreCode: '00001', storeCode: '00001',
-    storeName: 'ร้านค้า สยามสแควร์', zoneCode: 'Zone A', subzoneCode: 'Sub A1',
-    status: 'active', effectiveDate: '2025-01-01',
-    shape: { type: 'Polygon', coordinates: generatePolygonAroundPoint(100.5332, 13.7447, 0.4) },
-    areaColor: 'RGB(0,128,255)', comment: 'Delivery zone - Siam', warning: '',
-    globalId: 'TA-001', createdAt: '2025-01-01', createUser: 'ADMIN',
-    updatedAt: '2025-01-01', updateUser: 'ADMIN',
-    refPointX: 100.5332, refPointY: 13.7447,
-    wfId: 1, wfTransactionId: 1, parentId: null,
-    tradeareaTypeId: 1, tradeareaTypeName: 'delivery_area',
-  },
-  // Delivery Area for ร้านค้า Asoke (POI-002) — overlaps with Siam
-  {
-    id: 1003, poiId: 2, refStoreCode: '00002', storeCode: '00002',
-    storeName: 'ร้านค้า อโศก', zoneCode: 'Zone A', subzoneCode: 'Sub A2',
-    status: 'active', effectiveDate: '2025-02-01',
-    shape: { type: 'Polygon', coordinates: generatePolygonAroundPoint(100.5601, 13.7381, 0.5) },
-    areaColor: 'RGB(255,100,0)', comment: 'Delivery zone - Asoke', warning: '',
-    globalId: 'TA-003', createdAt: '2025-02-01', createUser: 'ADMIN',
-    updatedAt: '2025-02-01', updateUser: 'ADMIN',
-    refPointX: 100.5601, refPointY: 13.7381,
-    wfId: 1, wfTransactionId: 3, parentId: null,
-    tradeareaTypeId: 1, tradeareaTypeName: 'delivery_area',
-  },
-  // Delivery Area for ร้านค้า Thonglor (POI-003) — overlaps with Asoke
-  {
-    id: 1004, poiId: 3, refStoreCode: '00003', storeCode: '00003',
-    storeName: 'ร้านค้า ทองหล่อ', zoneCode: 'Zone B', subzoneCode: 'Sub B1',
-    status: 'active', effectiveDate: '2025-03-01',
-    shape: { type: 'Polygon', coordinates: generatePolygonAroundPoint(100.5787, 13.7343, 0.45) },
-    areaColor: 'RGB(200,0,200)', comment: 'Delivery zone - Thonglor', warning: '',
-    globalId: 'TA-004', createdAt: '2025-03-01', createUser: 'ADMIN',
-    updatedAt: '2025-03-01', updateUser: 'ADMIN',
-    refPointX: 100.5787, refPointY: 13.7343,
-    wfId: 1, wfTransactionId: 4, parentId: null,
-    tradeareaTypeId: 1, tradeareaTypeName: 'delivery_area',
-  },
-  // Delivery Area for ร้านค้า Lat Phrao (POI-004)
-  {
-    id: 1005, poiId: 4, refStoreCode: '00004', storeCode: '00004',
-    storeName: 'ร้านค้า ลาดพร้าว', zoneCode: 'Zone C', subzoneCode: 'Sub C1',
-    status: 'draft', effectiveDate: null,
-    shape: { type: 'Polygon', coordinates: generatePolygonAroundPoint(100.5882, 13.7881, 0.4) },
-    areaColor: 'RGB(100,200,50)', comment: 'Pending zone - Lat Phrao', warning: 'Draft',
-    globalId: 'TA-005', createdAt: '2025-04-01', createUser: 'ADMIN',
-    updatedAt: '2025-04-01', updateUser: 'ADMIN',
-    refPointX: 100.5882, refPointY: 13.7881,
-    wfId: 1, wfTransactionId: 5, parentId: null,
-    tradeareaTypeId: 1, tradeareaTypeName: 'delivery_area',
-  },
-  // Delivery Area for ร้านค้า Silom (POI-005) — overlaps with Siam
-  {
-    id: 1006, poiId: 5, refStoreCode: '00005', storeCode: '00005',
-    storeName: 'ร้านค้า สีลม', zoneCode: 'Zone A', subzoneCode: 'Sub A1',
-    status: 'active', effectiveDate: '2025-01-15',
-    shape: { type: 'Polygon', coordinates: generatePolygonAroundPoint(100.5231, 13.7262, 0.5) },
-    areaColor: 'RGB(50,50,200)', comment: 'Delivery zone - Silom', warning: '',
-    globalId: 'TA-006', createdAt: '2025-01-15', createUser: 'ADMIN',
-    updatedAt: '2025-01-15', updateUser: 'ADMIN',
-    refPointX: 100.5231, refPointY: 13.7262,
-    wfId: 1, wfTransactionId: 6, parentId: null,
-    tradeareaTypeId: 1, tradeareaTypeName: 'delivery_area',
-  },
-  // Store Hub areas
-  {
-    id: 2001, poiId: 1, refStoreCode: '00001', storeCode: '00001',
-    storeName: 'ร้านค้า สยามสแควร์', zoneCode: 'Zone A', subzoneCode: 'Sub A1',
-    status: 'active', effectiveDate: '2025-01-01',
-    shape: { type: 'Polygon', coordinates: generatePolygonAroundPoint(100.5332, 13.7447, 2.0) },
-    areaColor: 'RGB(255,165,0)', comment: 'Store Hub - Siam area', warning: '',
-    globalId: 'TA-HUB-001', createdAt: '2025-01-01', createUser: 'ADMIN',
-    updatedAt: '2025-01-01', updateUser: 'ADMIN',
-    refPointX: 100.5332, refPointY: 13.7447,
-    wfId: 1, wfTransactionId: 7, parentId: null,
-    tradeareaTypeId: 2, tradeareaTypeName: 'store_hub',
-  },
-  {
-    id: 2002, poiId: 2, refStoreCode: '00002', storeCode: '00002',
-    storeName: 'ร้านค้า อโศก', zoneCode: 'Zone A', subzoneCode: 'Sub A2',
-    status: 'active', effectiveDate: '2025-02-01',
-    shape: { type: 'Polygon', coordinates: generatePolygonAroundPoint(100.5601, 13.7381, 1.8) },
-    areaColor: 'RGB(220,20,60)', comment: 'Store Hub - Asoke area', warning: '',
-    globalId: 'TA-HUB-002', createdAt: '2025-02-01', createUser: 'ADMIN',
-    updatedAt: '2025-02-01', updateUser: 'ADMIN',
-    refPointX: 100.5601, refPointY: 13.7381,
-    wfId: 1, wfTransactionId: 8, parentId: null,
-    tradeareaTypeId: 2, tradeareaTypeName: 'store_hub',
-  },
-];
+const TRADE_AREAS = Array.from({ length: 10 }, (_, i) => {
+  const store = SEVEN_STORES[i];
+  const id = 1001 + i;
+  return {
+    id,
+    poiId: store.id,
+    refStoreCode: store.storeCode,
+    storeCode: store.storeCode,
+    storeName: store.name,
+    zoneCode: store.zoneName,
+    subzoneCode: store.subZoneName,
+    status: 'active',
+    effectiveDate: `2025-01-${String(i+1).padStart(2, '0')}`,
+    shape: { type: 'Polygon', coordinates: generatePolygonAroundPoint(store.longitude, store.latitude, 0.4 + (i % 3) * 0.1) },
+    areaColor: `RGB(${(i*30)%255},${(i*60)%255},${(i*90)%255})`,
+    comment: `Delivery zone - ${store.name}`,
+    warning: '',
+    globalId: `TA-${String(id).padStart(3, '0')}`,
+    createdAt: `2025-01-${String(i+1).padStart(2, '0')}`,
+    createUser: 'ADMIN',
+    updatedAt: `2025-01-${String(i+1).padStart(2, '0')}`,
+    updateUser: 'ADMIN',
+    refPointX: store.longitude,
+    refPointY: store.latitude,
+    wfId: 1,
+    wfTransactionId: id,
+    parentId: null,
+    tradeareaTypeId: 1,
+    tradeareaTypeName: 'delivery_area',
+  };
+});
 
 // Helper: check if two polygons intersect (using point-in-polygon + edge crossing)
 function polygonsIntersect(coordsA, coordsB) {

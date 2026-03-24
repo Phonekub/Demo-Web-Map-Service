@@ -212,67 +212,38 @@ export const FilterSeven = ({ onSearchSubmit, onClose }: FilterComponentProps) =
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // At least ONE must be filled
-    const isAnyFilterFilled =
-      (text ?? '').trim() ||
-      (address ?? '').trim() ||
-      (areaScope ?? '').trim() ||
-      (provinceCode ?? '').trim() ||
-      (districtCode ?? '').trim() ||
-      (subDistrictCode ?? '').trim() ||
-      (sevenType ?? '').trim();
-
-    // Validate radius
-    const numValue = parseFloat(radius) || 0;
-    const maxValue = radiusUnit === 'km' ? 2 : 2000;
-    const hasRadiusError = radius && numValue > maxValue;
-
-    const hasErrors = !isAnyFilterFilled || hasRadiusError;
-
-    if (!isAnyFilterFilled) {
+    // Only allow searching by store code or name (text input)
+    const isTextFilled = (text ?? '').trim();
+    if (!isTextFilled) {
       setError(filterKey, 'maps:filter_required');
+      return;
     } else {
       setError(filterKey, '');
     }
 
-    if (hasRadiusError) {
-      setField(filterKey, 'radiusError', 'maps:radius_max_error');
-    } else {
-      setField(filterKey, 'radiusError', '');
-    }
-
-    if (hasErrors) {
-      return;
-    }
-
-    // Clear errors
-    setError(filterKey, '');
-
     try {
-      const result = await refetchLocations({ throwOnError: true });
+      // ส่งเฉพาะ text และ type เพื่อให้ mock-server.js กรองถูกต้อง
+      const result = await fetchLocations({
+        search: text,
+        type: 'sevenEleven',
+        page: 1,
+        limit: 10,
+      });
 
-      if (result.data?.data?.search) {
+      if (result?.data?.search) {
         const searchResults = {
           data: {
-            search: result.data.data.search,
-            poi: result.data.data.poi,
+            search: result.data.search,
+            poi: result.data.poi,
           },
-          total: result.data.total,
+          total: result.total,
           params: {
-            type,
-            address,
-            text,
-            countryCode,
-            provinceCode,
-            districtCode,
-            subDistrictCode,
-            sevenType,
-            radius,
+            search: text,
+            type: 'sevenEleven',
             page: 1,
             limit: 10,
           },
         };
-
         onSearchSubmit(searchResults);
         onClose();
       } else {
@@ -311,7 +282,8 @@ export const FilterSeven = ({ onSearchSubmit, onClose }: FilterComponentProps) =
             {t(radiusError)}
           </div>
         )}
-        {/* Branch Input */}
+
+        {/* Branch Input (only) */}
         <div className="w-full">
           <Input
             type="text"
@@ -324,18 +296,7 @@ export const FilterSeven = ({ onSearchSubmit, onClose }: FilterComponentProps) =
           />
         </div>
 
-        {/* Address Input */}
-        <div className="w-full">
-          <Input
-            type="text"
-            className="input"
-            placeholder={t('maps:location')}
-            value={address}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setField(filterKey, 'address', e.target.value)
-            }
-          />
-        </div>
+        {/* Address Input removed for exact search requirement */}
 
         {/* Radius Input */}
         <div className="w-full flex gap-2">
