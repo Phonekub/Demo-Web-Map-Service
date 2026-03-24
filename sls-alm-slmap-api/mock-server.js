@@ -58,58 +58,38 @@ const SEVEN_STORES = Array.from({ length: 100 }, (_, i) => {
   };
 });
 
-const COMPETITOR_STORES = [
-  {
-    id: 101, uid: 'COMP-001', name: 'FamilyMart สยาม', namt: 'FamilyMart สยาม',
-    branchName: 'FamilyMart Siam', branchCode: 'FM001', storeCode: 'FM001',
-    location: 'สยามสแควร์', layerId: 2, layerName: 'Competitor',
-    geom: { type: 'Point', coordinates: [100.5340, 13.7440] },
-    area: { id: 0, coordinates: [], shape: 'Polygon' },
-    layer: { id: 2, symbol: 'competitor' },
-    status: 'active', competitorType: 1, competitorTypeName: 'FamilyMart',
-    latitude: 13.7440, longitude: 100.5340,
-  },
-  {
-    id: 102, uid: 'COMP-002', name: 'Lawson อโศก', namt: 'Lawson อโศก',
-    branchName: 'Lawson Asoke', branchCode: 'LW001', storeCode: 'LW001',
-    location: 'อโศก', layerId: 2, layerName: 'Competitor',
-    geom: { type: 'Point', coordinates: [100.5610, 13.7370] },
-    area: { id: 0, coordinates: [], shape: 'Polygon' },
-    layer: { id: 2, symbol: 'competitor' },
-    status: 'active', competitorType: 2, competitorTypeName: 'Lawson',
-    latitude: 13.7370, longitude: 100.5610,
-  },
-  {
-    id: 103, uid: 'COMP-003', name: 'Mini Big C ทองหล่อ', namt: 'Mini Big C ทองหล่อ',
-    branchName: 'Mini Big C Thonglor', branchCode: 'MBC001', storeCode: 'MBC001',
-    location: 'ทองหล่อ', layerId: 2, layerName: 'Competitor',
-    geom: { type: 'Point', coordinates: [100.5810, 13.7320] },
-    area: { id: 0, coordinates: [], shape: 'Polygon' },
-    layer: { id: 2, symbol: 'competitor' },
-    status: 'active', competitorType: 3, competitorTypeName: 'Mini Big C',
-    latitude: 13.7320, longitude: 100.5810,
-  },
-  {
-    id: 104, uid: 'COMP-004', name: 'Lotus Express สีลม', namt: 'Lotus Express สีลม',
-    branchName: 'Lotus Express Silom', branchCode: 'LE001', storeCode: 'LE001',
-    location: 'สีลม', layerId: 2, layerName: 'Competitor',
-    geom: { type: 'Point', coordinates: [100.5250, 13.7280] },
-    area: { id: 0, coordinates: [], shape: 'Polygon' },
-    layer: { id: 2, symbol: 'competitor' },
-    status: 'active', competitorType: 4, competitorTypeName: 'Lotus Express',
-    latitude: 13.7280, longitude: 100.5250,
-  },
-  {
-    id: 105, uid: 'COMP-005', name: 'FamilyMart ลาดพร้าว', namt: 'FamilyMart ลาดพร้าว',
-    branchName: 'FamilyMart Lat Phrao', branchCode: 'FM002', storeCode: 'FM002',
-    location: 'ลาดพร้าว', layerId: 2, layerName: 'Competitor',
-    geom: { type: 'Point', coordinates: [100.5900, 13.7900] },
-    area: { id: 0, coordinates: [], shape: 'Polygon' },
-    layer: { id: 2, symbol: 'competitor' },
-    status: 'active', competitorType: 1, competitorTypeName: 'FamilyMart',
-    latitude: 13.7900, longitude: 100.5900,
-  },
+const COMPETITOR_TYPES = [
+  { type: 1, name: 'FamilyMart' },
+  { type: 2, name: 'Lawson' },
+  { type: 3, name: 'Mini Big C' },
+  { type: 4, name: 'Lotus Express' },
 ];
+const COMPETITOR_STORES = Array.from({ length: 40 }, (_, i) => {
+  const id = 101 + i;
+  const compType = COMPETITOR_TYPES[i % COMPETITOR_TYPES.length];
+  const branchName = `${compType.name} Branch ${i + 1}`;
+  const branchCode = `${compType.name.replace(/\s/g, '').toUpperCase().slice(0,2)}${String(i + 1).padStart(3, '0')}`;
+  const storeCode = branchCode;
+  const name = `${compType.name} ${branchName}`;
+  const namt = name;
+  const location = `Location ${i + 1}`;
+  const layerId = 2;
+  const layerName = 'Competitor';
+  // สุ่มพิกัดในกรุงเทพฯ/ปริมณฑล (lat: 13.6–13.9, lng: 100.4–100.75)
+  const latitude = +(13.6 + Math.random() * 0.3).toFixed(6);
+  const longitude = +(100.4 + Math.random() * 0.35).toFixed(6);
+  const geom = { type: 'Point', coordinates: [longitude, latitude] };
+  const area = { id: 0, coordinates: [], shape: 'Polygon' };
+  const layer = { id: 2, symbol: 'competitor' };
+  const status = 'active';
+  return {
+    id, uid: `COMP-${String(i + 1).padStart(3, '0')}`,
+    name, namt, branchName, branchCode, storeCode, location, layerId, layerName,
+    geom, area, layer, status,
+    competitorType: compType.type, competitorTypeName: compType.name,
+    latitude, longitude,
+  };
+});
 
 const MOCK_USER = {
   id: 1, employeeId: 'DEMO001', fullName: 'Demo User',
